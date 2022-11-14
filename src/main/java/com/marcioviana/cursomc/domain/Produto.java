@@ -1,5 +1,7 @@
 package com.marcioviana.cursomc.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,7 +25,9 @@ public class Produto implements Serializable {
 
 
 
-     @ManyToMany
+
+    @JsonBackReference
+    @ManyToMany
      @JoinTable(name = "PRODUTO_CATEGORIA",
         joinColumns = @JoinColumn(name = "produto_id"),
          inverseJoinColumns = @JoinColumn(name = "categoria_id")
@@ -40,36 +44,43 @@ public Produto(Integer id, String Nome, Double preco){
 }
 
     public Integer getId() {
-        return id;
+
+         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getNome() {
+    public String getNome()
+    {
         return nome;
     }
 
-    public void setNome(String nome) {
+    public void setNome(String nome)
+    {
         this.nome = nome;
     }
 
     public Double getPreco() {
-        return preco;
+
+         return preco;
     }
 
-    public void setPreco(Double preco) {
+    public void setPreco(Double preco)
+    {
         this.preco = preco;
     }
 
 
-    public List<Categoria> getCategorias() {
+    public List<Categoria> getCategorias()
+    {
         return categorias;
     }
 
     public void setCategorias(List<Categoria> categorias) {
-        this.categorias = categorias;
+
+         this.categorias = categorias;
     }
 
     @Override
